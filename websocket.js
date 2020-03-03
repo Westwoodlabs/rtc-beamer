@@ -31,7 +31,7 @@ const server = http.createServer({
     const content = fs.readFileSync('.' + req.url);
     res.writeHead(200, {'Content-Type': req.url.endsWith("html") ? 'text/html' : "text/javascript"});
     res.end(content);
-}).listen(443);
+}).listen(8443);
 
 const wss = new WebSocket.Server({server});
 
