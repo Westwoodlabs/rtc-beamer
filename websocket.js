@@ -18,39 +18,18 @@ function isFileAllowed(file) {
     return false;
 }
 
-http.createServer(function (req, res) {
+const server = http.createServer(function (req, res) {
     if (!isFileAllowed(req.url)) {
         res.writeHead(404);
         res.end();
         return;
     }
     const content = fs.readFileSync('.' + req.url);
-    res.writeHead(200, {'Content-Type': req.url.endsWith("html") ? 'text/html' : "application/json"});
+    res.writeHead(200, {'Content-Type': req.url.endsWith("html") ? 'text/html' : "text/javascript"});
     res.end(content);
 }).listen(8000);
 
-const wss = new WebSocket.Server({
-    port: 8080,
-    perMessageDeflate: {
-        zlibDeflateOptions: {
-            // See zlib defaults.
-            chunkSize: 1024,
-            memLevel: 7,
-            level: 3
-        },
-        zlibInflateOptions: {
-            chunkSize: 10 * 1024
-        },
-        // Other options settable:
-        clientNoContextTakeover: true, // Defaults to negotiated value.
-        serverNoContextTakeover: true, // Defaults to negotiated value.
-        serverMaxWindowBits: 10, // Defaults to negotiated value.
-        // Below options specified as default values.
-        concurrencyLimit: 10, // Limits zlib concurrency for perf.
-        threshold: 1024 // Size (in bytes) below which messages
-        // should not be compressed.
-    }
-});
+const wss = new WebSocket.Server({server});
 
 clients = {};
 let clientIdGen = 1;

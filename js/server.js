@@ -5,7 +5,7 @@ let ws;
 let currentPartner = null;
 
 async function main() {
-    ws = new WebSocket("ws://127.0.0.1:8080");
+    ws = new WebSocket("ws://" + window.location.host);
 
     ws.onopen = _ => {
         console.log("WS connected");
