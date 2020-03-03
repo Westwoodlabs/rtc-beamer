@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const WebSocket = require('ws');
-const http = require('http');
+const https = require('https');
 const fs = require('fs');
 const allowedFiles = [
     "/index.html",
@@ -18,7 +18,7 @@ function isFileAllowed(file) {
     return false;
 }
 
-const server = http.createServer({
+const server = https.createServer({
         cert: fs.readFileSync('./cert.pem'),
         key: fs.readFileSync('./key.pem')
     },
