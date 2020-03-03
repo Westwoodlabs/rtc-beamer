@@ -1,0 +1,23 @@
+{
+  "name": "rtc-beamer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "websocket.js",
+  "dependencies": {
+    "ws": "^7.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Westwoodlabs/rtc-beamer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Westwoodlabs/rtc-beamer/issues"
+  },
+  "homepage": "https://github.com/Westwoodlabs/rtc-beamer#readme"
+}
