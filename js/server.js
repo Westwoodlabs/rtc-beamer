@@ -5,7 +5,7 @@ let ws;
 let currentPartner = null;
 
 async function main() {
-    ws = new WebSocket("ws://" + window.location.host);
+    ws = new WebSocket("wss://" + window.location.host);
 
     ws.onopen = _ => {
         console.log("WS connected");
