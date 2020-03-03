@@ -18,7 +18,11 @@ function isFileAllowed(file) {
     return false;
 }
 
-const server = http.createServer(function (req, res) {
+const server = http.createServer({
+        cert: fs.readFileSync('./cert.pem'),
+        key: fs.readFileSync('./key.pem')
+    },
+    function (req, res) {
     if (!isFileAllowed(req.url)) {
         res.writeHead(404);
         res.end();
@@ -27,7 +31,7 @@ const server = http.createServer(function (req, res) {
     const content = fs.readFileSync('.' + req.url);
     res.writeHead(200, {'Content-Type': req.url.endsWith("html") ? 'text/html' : "text/javascript"});
     res.end(content);
-}).listen(8000);
+}).listen(443);
 
 const wss = new WebSocket.Server({server});
 
