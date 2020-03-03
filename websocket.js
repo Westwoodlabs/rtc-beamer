@@ -1,4 +1,4 @@
-#!/bin/env node
+#!/usr/bin/env node
 const WebSocket = require('ws');
 const http = require('http');
 const fs = require('fs');
